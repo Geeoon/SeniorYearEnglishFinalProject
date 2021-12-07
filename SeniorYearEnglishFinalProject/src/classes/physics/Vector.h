@@ -23,6 +23,14 @@ struct Vector2 {
 	}
 };
 
+inline Vector2 operator+(const Vector2& l, const Vector2& r) {
+	return Vector2{ l.x + r.x, l.y + r.y };
+}
+
+inline Vector2 operator-(const Vector2& l, const Vector2& r) {
+	return Vector2{ l.x - r.x, l.y - r.y };
+}
+
 inline Vector2 operator*(const float s, const Vector2& v) {
 	return Vector2{ v.x * s, v.y * s };
 }

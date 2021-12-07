@@ -33,8 +33,15 @@ void UI::display() {
 void UI::pollEvent() {
 	sf::Event event;
 	while (window->pollEvent(event)) {
-		if (event.type == sf::Event::Closed) {
-			window->close();
+		switch (event.type) {
+			case (sf::Event::Closed): {
+				window->close();
+			} break;
+
+			case (sf::Event::Resized): {
+				sf::FloatRect visibleArea(0, 0, static_cast<float>(event.size.width), static_cast<float>(event.size.height));
+				window->setView(sf::View(visibleArea));
+			} break;
 		}
 	}
 }

@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\classes\scene\Bullet.cpp" />
     <ClCompile Include="src\classes\scene\Dummy.cpp" />
     <ClCompile Include="src\classes\scene\Entity.cpp" />
     <ClCompile Include="src\classes\scene\Object.cpp" />
@@ -151,6 +152,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\physics\Vector.h" />
+    <ClInclude Include="src\classes\scene\Bullet.h" />
     <ClInclude Include="src\classes\scene\Dummy.h" />
     <ClInclude Include="src\classes\scene\Entity.h" />
     <ClInclude Include="src\classes\scene\Object.h" />
