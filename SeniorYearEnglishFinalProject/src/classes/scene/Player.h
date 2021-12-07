@@ -14,4 +14,5 @@ public:
 
 private:
 	sf::CircleShape sprite;
+	sf::RectangleShape gunSprite;
 };
