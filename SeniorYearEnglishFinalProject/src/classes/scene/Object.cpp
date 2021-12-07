@@ -20,6 +20,6 @@ void Object::update(float elapsedTime) {
 
 }
 
-Vector2 Object::getPosition() {
+Vector2 Object::getPosition() const {
 	return position;
 }

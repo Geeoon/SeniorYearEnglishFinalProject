@@ -9,7 +9,7 @@ public:
 	~Object();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void update(float elapsedTime);
-	Vector2 getPosition();
+	Vector2 getPosition() const;
 
 protected:
 	Vector2 position;

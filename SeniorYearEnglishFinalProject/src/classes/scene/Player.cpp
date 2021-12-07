@@ -1,25 +1,21 @@
 #include "Player.h"
 
-Player::Player(float x, float y) : Entity{ x, y }, sprite{ sf::CircleShape{ 20.0f } }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
-	sprite.setFillColor(sf::Color::Transparent);
-	sprite.setOutlineColor(sf::Color::Green);
-	sprite.setOutlineThickness(4);
-	sprite.setOrigin(sprite.getRadius(), sprite.getRadius());
-
-	gunSprite.setFillColor(sf::Color::Green);
+Player::Player(float x, float y) : Dummy{ x, y }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
+	sprite.setOutlineColor(sf::Color{ 0, 255, 65 });
+	
+	gunSprite.setFillColor(sf::Color{ 0, 255, 65 });
 	gunSprite.setOrigin(gunSprite.getSize().x / 2.0f, -(sprite.getRadius() + 7.0f));
 	maxSpeed = 200.0f;
+	hp = 3;
 }
 
-Player::Player(Vector2 vec) : Entity{ vec }, sprite{ sf::CircleShape{ 20.0f } }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
-	sprite.setFillColor(sf::Color::Transparent);
+Player::Player(Vector2 vec) : Dummy{ vec }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
 	sprite.setOutlineColor(sf::Color{ 0, 255, 65 });
-	sprite.setOutlineThickness(4);
-	sprite.setOrigin(sprite.getRadius(), sprite.getRadius());
 
 	gunSprite.setFillColor(sf::Color{ 0, 255, 65 });
 	gunSprite.setOrigin(gunSprite.getSize().x / 2.0f, -(sprite.getRadius() + 7.0f));
 	maxSpeed = 200.0f;
+	hp = 3;
 }
 
 Player::~Player() {
@@ -27,12 +23,12 @@ Player::~Player() {
 }
 
 void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-	target.draw(sprite);
-
+	Dummy::draw(target, states);
 	target.draw(gunSprite);
 }
 
 void Player::update(float elapsedTime) {
+	Dummy::update(elapsedTime);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		position -= elapsedTime * maxSpeed * Vector2(0.0f, 1.0f);
 	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
@@ -45,7 +41,6 @@ void Player::update(float elapsedTime) {
 		position -= elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
 	}
 
-	sprite.setPosition(position.x, position.y);
 	gunSprite.setPosition(position.x, position.y);
 	gunSprite.setRotation(orientation - 90.0f);
 }

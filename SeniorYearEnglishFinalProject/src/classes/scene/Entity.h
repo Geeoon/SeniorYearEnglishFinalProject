@@ -13,4 +13,5 @@ public:
 protected:
 	float maxSpeed{ 100.0f };
 	float orientation{ 0.0f };
+	int hp{ 1 };
 };

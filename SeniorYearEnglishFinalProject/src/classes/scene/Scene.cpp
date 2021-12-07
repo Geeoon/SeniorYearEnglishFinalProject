@@ -1,8 +1,9 @@
 #include "Scene.h"
 
 Scene::Scene() {
-	player = std::make_shared<Player>(0.0f, 0.0f);
+	player = std::make_shared<Player>(100.0f, 100.0f);
 	entities.push_back(player);
+	entities.push_back(std::make_shared<Dummy>(200.0f, 200.0f));
 }
 
 Scene::~Scene() {
@@ -19,9 +20,13 @@ void Scene::update(sf::Vector2i mouseLocation) {
 	elapsedTime = clock.getElapsedTime();
 	clock.restart();
 
-	player->setOrientation(atan2f(mouseLocation.y - player->getPosition().y, mouseLocation.x - player->getPosition().x) * 180.0f / 3.141592f);
+	player->setOrientation(atan2f(mouseLocation.y - player->getPosition().y, mouseLocation.x - player->getPosition().x) * 180.0f / 3.141593f);
 
-	for (auto& entity : entities) {
+	for (auto entity : entities) {
 		entity->update(elapsedTime.asSeconds());
 	}
+}
+
+std::shared_ptr<Player> Scene::getPlayer() const {
+	return player;
 }

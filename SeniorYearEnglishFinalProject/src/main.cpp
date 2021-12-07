@@ -5,10 +5,12 @@
 int main() {
 	UI ui;
 	Scene scene;
+	ui.setObjFocus(scene.getPlayer());
 	while (ui.isOpen()) {
 		ui.reset();
-		
-		scene.update(ui.getMouseLocation());
+
+		scene.update(ui.getAdjustedMouseLocation());
+		ui.update();
 
 		ui.draw(scene);
 		ui.display();

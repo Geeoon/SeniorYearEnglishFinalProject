@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include "Entity.h"
+#include "Dummy.h"
 #include "Player.h"
 
 class Scene : public sf::Drawable {
@@ -10,6 +11,7 @@ public:
 	~Scene();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update(sf::Vector2i mouseLocation);
+	std::shared_ptr<Player> getPlayer() const;
 
 	inline static sf::Time elapsedTime;
 

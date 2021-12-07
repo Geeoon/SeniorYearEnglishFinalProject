@@ -1,7 +1,7 @@
 #include "UI.h"
 
 UI::UI() : window{ std::make_unique<sf::RenderWindow>(sf::VideoMode(850, 850), "Game") } {
-	window->setFramerateLimit(60);
+	window->setFramerateLimit(100);
 }
 
 UI::~UI() {
@@ -14,6 +14,16 @@ void UI::reset() {
 
 void UI::draw(const sf::Drawable& drawable) const {
 	window->draw(drawable);
+}
+
+void UI::update() {
+	if (objFocus) {
+		seek = sf::Vector2f{ getMouseLocation() } - window->getView().getSize() / 2.0f;
+		seek *= 0.15f;
+		sf::View view = window->getView();
+		view.setCenter(sf::Vector2f{ objFocus->getPosition().x, objFocus->getPosition().y } + seek);
+		window->setView(view);
+	}
 }
 
 void UI::display() {
@@ -29,10 +39,18 @@ void UI::pollEvent() {
 	}
 }
 
-bool UI::isOpen() {
+bool UI::isOpen() const {
 	return window->isOpen();
 }
 
-sf::Vector2i UI::getMouseLocation() {
+sf::Vector2i UI::getMouseLocation() const {
 	return sf::Mouse::getPosition(*window);
+}
+
+sf::Vector2i UI::getAdjustedMouseLocation() const {
+	return sf::Mouse::getPosition(*window) + static_cast<sf::Vector2i>(window->getView().getCenter()) - sf::Vector2i{ window->getView().getSize() / 2.0f };
+}
+
+void UI::setObjFocus(std::shared_ptr<Object> f) {
+	objFocus = f;
 }
