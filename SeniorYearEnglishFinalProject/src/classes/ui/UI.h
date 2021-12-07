@@ -10,6 +10,7 @@ public:
 	void display();
 	void pollEvent();
 	bool isOpen();
+	sf::Vector2i getMouseLocation();
 
 private:
 	std::unique_ptr<sf::RenderWindow> window{ nullptr };

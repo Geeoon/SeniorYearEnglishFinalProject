@@ -16,6 +16,10 @@ void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 }
 
-void Object::update() {
+void Object::update(float elapsedTime) {
 
+}
+
+Vector2 Object::getPosition() {
+	return position;
 }

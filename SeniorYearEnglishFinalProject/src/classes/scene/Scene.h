@@ -9,11 +9,12 @@ public:
 	Scene();
 	~Scene();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	void update();
+	void update(sf::Vector2i mouseLocation);
 
 	inline static sf::Time elapsedTime;
 
 private:
 	sf::Clock clock;
-	std::vector<std::unique_ptr<Entity>> entities;
+	std::shared_ptr<Player> player;
+	std::vector<std::shared_ptr<Entity>> entities;
 };

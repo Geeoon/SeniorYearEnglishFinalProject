@@ -8,7 +8,7 @@ int main() {
 	while (ui.isOpen()) {
 		ui.reset();
 		
-		scene.update();
+		scene.update(ui.getMouseLocation());
 
 		ui.draw(scene);
 		ui.display();

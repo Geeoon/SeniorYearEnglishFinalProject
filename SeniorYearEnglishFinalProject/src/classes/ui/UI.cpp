@@ -32,3 +32,7 @@ void UI::pollEvent() {
 bool UI::isOpen() {
 	return window->isOpen();
 }
+
+sf::Vector2i UI::getMouseLocation() {
+	return sf::Mouse::getPosition(*window);
+}

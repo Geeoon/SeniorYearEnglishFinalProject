@@ -8,7 +8,9 @@ public:
 	Entity(float x, float y);
 	Entity(Vector2 pos);
 	~Entity();
+	void setOrientation(float o);
 
 protected:
-	float maxSpeed = 100.0f;
+	float maxSpeed{ 100.0f };
+	float orientation{ 0.0f };
 };

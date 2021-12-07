@@ -11,3 +11,7 @@ Entity::Entity(Vector2 pos) : Object{ pos } {
 Entity::~Entity() {
 
 }
+
+void Entity::setOrientation(float o) {
+	orientation = o;
+}

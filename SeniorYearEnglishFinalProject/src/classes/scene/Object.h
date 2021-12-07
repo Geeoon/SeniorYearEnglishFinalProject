@@ -8,7 +8,8 @@ public:
 	Object(Vector2 pos);
 	~Object();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	virtual void update();
+	virtual void update(float elapsedTime);
+	Vector2 getPosition();
 
 protected:
 	Vector2 position;
