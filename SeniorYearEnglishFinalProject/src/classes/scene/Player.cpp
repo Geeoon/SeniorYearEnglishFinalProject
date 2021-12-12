@@ -26,9 +26,8 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 	Dummy::draw(target, states);
 	target.draw(gunSprite);
 
-	for (auto entity : entities) {
-		target.draw(*entity);
-	}
+	std::for_each(entities.begin(), entities.end(), [&](std::shared_ptr<Entity> e) { target.draw(*e); });
+
 }
 
 void Player::update(float elapsedTime) {
@@ -57,7 +56,5 @@ void Player::update(float elapsedTime) {
 	gunSprite.setPosition(position.x, position.y);
 	gunSprite.setRotation(orientation - 90.0f);
 
-	for (auto entity : entities) {
-		entity->update(elapsedTime);
-	}
+	std::for_each(entities.begin(), entities.end(), [&](std::shared_ptr<Entity> e) { e->update(elapsedTime); });
 }

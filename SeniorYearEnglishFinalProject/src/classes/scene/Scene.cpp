@@ -11,9 +11,7 @@ Scene::~Scene() {
 }
 
 void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-	for (auto& entity : entities) {
-		target.draw(*entity);
-	}
+	std::for_each(entities.begin(), entities.end(), [&](std::shared_ptr<Entity> e) { target.draw(*e); });
 }
 
 void Scene::update(sf::Vector2i mouseLocation) {
@@ -22,9 +20,8 @@ void Scene::update(sf::Vector2i mouseLocation) {
 
 	player->setOrientation(atan2f(mouseLocation.y - player->getPosition().y, mouseLocation.x - player->getPosition().x) * 180.0f / 3.141593f);
 
-	for (auto entity : entities) {
-		entity->update(elapsedTime.asSeconds());
-	}
+	std::for_each(entities.begin(), entities.end(), [&](std::shared_ptr<Entity> e) { e->update(elapsedTime.asSeconds()); });
+
 }
 
 std::shared_ptr<Player> Scene::getPlayer() const {
