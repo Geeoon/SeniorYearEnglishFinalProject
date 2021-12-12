@@ -1,16 +1,17 @@
 #pragma once
+#include <queue>
 #include "../physics/Vector.h"
 #include "Entity.h"
 
 class Dummy : public Entity {
 public:
-	Dummy(float x, float y);
-	Dummy(Vector2 vec);
+	Dummy(float x, float y, std::queue<std::shared_ptr<Entity>>& e);
+	Dummy(Vector2 vec, std::queue<std::shared_ptr<Entity>>& e);
 	~Dummy();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
 
 protected:
 	sf::CircleShape sprite;
-
+	std::queue<std::shared_ptr<Entity>>& entities;
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <queue>
 #include "Entity.h"
 #include "Dummy.h"
 #include "Player.h"
@@ -19,4 +20,5 @@ private:
 	sf::Clock clock;
 	std::shared_ptr<Player> player;
 	std::vector<std::shared_ptr<Entity>> entities;
+	std::queue<std::shared_ptr<Entity>> entitiesQueue;
 };
