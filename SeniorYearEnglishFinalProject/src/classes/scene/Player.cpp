@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(float x, float y, std::queue<std::shared_ptr<Entity>>& e) : Dummy{ x, y, e }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
+Player::Player(float x, float y, std::queue<std::shared_ptr<Object>>& e) : Dummy{ x, y, e }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
 	sprite.setOutlineColor(sf::Color{ 0, 255, 65 });
 	
 	gunSprite.setFillColor(sf::Color{ 0, 255, 65 });
@@ -9,7 +9,7 @@ Player::Player(float x, float y, std::queue<std::shared_ptr<Entity>>& e) : Dummy
 	hp = 3;
 }
 
-Player::Player(Vector2 vec, std::queue<std::shared_ptr<Entity>>& e) : Dummy{ vec, e }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
+Player::Player(Vector2 vec, std::queue<std::shared_ptr<Object>>& e) : Dummy{ vec, e }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
 	sprite.setOutlineColor(sf::Color{ 0, 255, 65 });
 
 	gunSprite.setFillColor(sf::Color{ 0, 255, 65 });
@@ -43,7 +43,7 @@ void Player::update(float elapsedTime) {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (!leftClickFlag) {
 			leftClickFlag = true;
-			entities.push(std::make_shared<Bullet>(position + Vector2{ cos(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f), sin(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f) }, orientation));
+			objects.push(std::make_shared<Bullet>(position + Vector2{ cos(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f), sin(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f) }, orientation));
 		}
 	} else {
 		leftClickFlag = false;

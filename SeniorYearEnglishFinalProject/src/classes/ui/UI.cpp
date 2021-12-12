@@ -19,7 +19,7 @@ void UI::draw(const sf::Drawable& drawable) const {
 void UI::update() {
 	if (objFocus) {
 		seek = sf::Vector2f{ getMouseLocation() } - window->getView().getSize() / 2.0f;
-		seek *= 0.15f;
+		seek *= 0.1f;
 		sf::View view = window->getView();
 		view.setCenter(sf::Vector2f{ objFocus->getPosition().x, objFocus->getPosition().y } + seek);
 		window->setView(view);

@@ -8,8 +8,8 @@
 
 class Player : public Dummy {
 public:
-	Player(float x, float y, std::queue<std::shared_ptr<Entity>>& e);
-	Player(Vector2 vec, std::queue<std::shared_ptr<Entity>>& e);
+	Player(float x, float y, std::queue<std::shared_ptr<Object>>& e);
+	Player(Vector2 vec, std::queue<std::shared_ptr<Object>>& e);
 	~Player();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;

@@ -19,6 +19,6 @@ public:
 private:
 	sf::Clock clock;
 	std::shared_ptr<Player> player;
-	std::vector<std::shared_ptr<Entity>> entities;
-	std::queue<std::shared_ptr<Entity>> entitiesQueue;
+	std::vector<std::shared_ptr<Object>> objects;
+	std::queue<std::shared_ptr<Object>> objectsQueue;
 };
