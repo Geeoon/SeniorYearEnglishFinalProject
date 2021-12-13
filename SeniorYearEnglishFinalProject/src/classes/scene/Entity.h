@@ -9,8 +9,10 @@ public:
 	Entity(Vector2 pos, std::shared_ptr<Level> l);
 	~Entity();
 	void setOrientation(float o);
+	virtual void move(Vector2 m);
 
 protected:
+	virtual bool collision(Vector2 pos);
 	float maxSpeed{ 100.0f };
 	float orientation{ 0.0f };
 	int hp{ 1 };

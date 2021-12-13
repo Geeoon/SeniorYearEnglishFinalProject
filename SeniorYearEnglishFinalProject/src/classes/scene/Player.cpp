@@ -71,6 +71,5 @@ bool Player::collision(Vector2 pos) {
 			break;
 		}
 	}
-	
 	return output;
 }

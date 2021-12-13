@@ -15,3 +15,16 @@ Entity::~Entity() {
 void Entity::setOrientation(float o) {
 	orientation = o;
 }
+
+void Entity::move(Vector2 m) {
+	Vector2 future{ position + m };
+
+	if (!collision(future)) {
+		position = future;
+	}
+}
+
+bool Entity::collision(Vector2 pos) {
+	bool output{ false };
+	return output;
+}

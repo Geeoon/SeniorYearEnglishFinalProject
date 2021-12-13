@@ -14,12 +14,11 @@ public:
 	~Player();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
-
-private:
-	void move(Vector2 m);
-	bool collision(Vector2 pos);
+	virtual void move(Vector2 m) override;
 
 protected:
+	virtual bool collision(Vector2 pos) override;
+
 	bool leftClickFlag{ false };
 	sf::RectangleShape gunSprite;
 };

@@ -23,6 +23,28 @@ void Bullet::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void Bullet::update(float elapsedTime) {
-	position += Vector2{ elapsedTime * maxSpeed * cos(orientation * 3.141593f / 180.0f), elapsedTime * maxSpeed * sin(orientation * 3.141593f / 180.0f) };
+	move(Vector2{ elapsedTime * maxSpeed * cos(orientation * 3.141593f / 180.0f), elapsedTime * maxSpeed * sin(orientation * 3.141593f / 180.0f) });
 	sprite.setPosition(position.x, position.y);
+}
+
+void Bullet::move(Vector2 m) {
+	Vector2 future{ position + m };
+
+	if (!collision(future)) {
+		position = future;
+	} else {
+
+	}
+}
+
+bool Bullet::collision(Vector2 pos) {
+	bool output{ false };
+	for (int c = 0; c < 4; c++) {
+		Vector2 post{ pos.x + c % 2 * 0 - 0, pos.y + c / 2 * 0 - 0 };
+		if (level->getTile(static_cast<int>(post.x / 40.0f), static_cast<int>(post.y / 40.0f))->solid()) {
+			output = true;
+			break;
+		}
+	}
+	return output;
 }
