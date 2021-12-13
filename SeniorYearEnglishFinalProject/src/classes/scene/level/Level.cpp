@@ -1,14 +1,17 @@
 #include "Level.h"
 
 Level::Level() : genericTile{ std::make_shared<Tile>(0, 0) } {
-    for (int i = 0; i < 30; i++) {
-        //tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile >>(std::pair<int, int>{ i, 0 }, std::make_shared<WallTile>(i, 0)));
-        //tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile >>(std::pair<int, int>{ 0, i + 1 }, std::make_shared<WallTile>(0, i + 1)));
-
-        //tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile >>(std::pair<int, int>{ 0, i * 3 }, std::make_shared<WallTile>(0, i * 3)));
-        //tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile >>(std::pair<int, int>{ i + 1, 30 }, std::make_shared<WallTile>(i + 1, 30)));
+    int x = 50;
+    int y = 30;
+    for (int i = 2; i < x; i++) {
+        tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ i, 2 }, std::make_shared<WallTile>(i, 2)));
+        tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ i, y }, std::make_shared<WallTile>(i, y)));
     }
-    tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile >>(std::pair<int, int>{ 0, 2 }, std::make_shared<WallTile>(0, 2)));
+
+    for (int i = 2; i < y + 1; i++) {
+        tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ 2, i }, std::make_shared<WallTile>(2, i)));
+        tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ x, i }, std::make_shared<WallTile>(x, i)));
+    }
 
 
 }
