@@ -36,7 +36,13 @@ void Scene::update(sf::Vector2i mouseLocation) {
 	}
 
 	// iterate and kill objects with getKill() == true
-	std::for_each(objects.begin(), objects.end(), [&](std::shared_ptr<Object> e) { e->); });
+	for (auto i = objects.begin(); i != objects.end();) {
+		if ((*i)->getKill()) {
+			i = objects.erase(i);
+		} else {
+			++i;
+		}
+	}
 
 	// check for collisions between objects
 	/*
