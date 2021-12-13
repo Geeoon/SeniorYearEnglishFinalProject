@@ -32,10 +32,15 @@ void Player::update(float elapsedTime) {
 	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		futurePosition -= elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
 	}
-
-	if (!level->getTile(static_cast<int>(futurePosition.x / 40.0f), static_cast<int>(futurePosition.y / 40.0f))->solid()) {
-		position = futurePosition;
+	
+	if (!level->getTile(static_cast<int>(futurePosition.x / 40.0f), static_cast<int>(position.y / 40.0f))->solid()) {
+		position.x = futurePosition.x;
 	}
+
+	if (!level->getTile(static_cast<int>(position.x / 40.0f), static_cast<int>(futurePosition.y / 40.0f))->solid()) {
+		position.y = futurePosition.y;
+	}
+
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (!leftClickFlag) {
