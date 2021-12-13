@@ -1,10 +1,10 @@
 #include "Object.h"
 
-Object::Object(float x, float y, std::shared_ptr<Level> l) : position{ Vector2{x, y} }, level{ l } {
+Object::Object(float x, float y, std::shared_ptr<Level> l) : kill{ false }, position { Vector2{ x, y } }, level{ l } {
 
 }
 
-Object::Object(Vector2 pos, std::shared_ptr<Level> l) : position{ pos }, level{ l } {
+Object::Object(Vector2 pos, std::shared_ptr<Level> l) : kill{ false }, position { pos }, level{ l } {
 
 }
 
@@ -30,4 +30,8 @@ bool Object::collided(const Object& other) {
 
 bool Object::hurt() {
 	return false;
+}
+
+bool Object::getKill() {
+	return kill;
 }

@@ -17,6 +17,9 @@ void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void Scene::update(sf::Vector2i mouseLocation) {
+	// have the dummies come towards the player and chase them.
+	// Have text at the beginning that describes the world.
+
 	elapsedTime = clock.getElapsedTime();
 	clock.restart();
 
@@ -32,13 +35,17 @@ void Scene::update(sf::Vector2i mouseLocation) {
 		objectsQueue.pop();
 	}
 
+	// iterate and kill objects with getKill() == true
+	std::for_each(objects.begin(), objects.end(), [&](std::shared_ptr<Object> e) { e->); });
+
 	// check for collisions between objects
+	/*
 	for (std::vector<std::shared_ptr<Object>>::iterator i = objects.begin(); i != objects.end() - 1; ++i) {
 		for (std::vector<std::shared_ptr<Object>>::iterator j = i + 1; j != objects.end(); ++j) {
 			(**i).collided(**j);
 		}
 	}
-	
+	*/
 }
 
 std::shared_ptr<Player> Scene::getPlayer() const {

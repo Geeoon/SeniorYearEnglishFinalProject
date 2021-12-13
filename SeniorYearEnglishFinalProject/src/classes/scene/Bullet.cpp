@@ -33,7 +33,7 @@ void Bullet::move(Vector2 m) {
 	if (!collision(future)) {
 		position = future;
 	} else {
-
+		kill = true;
 	}
 }
 

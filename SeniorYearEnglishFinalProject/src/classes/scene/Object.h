@@ -13,8 +13,10 @@ public:
 	Vector2 getPosition() const;
 	virtual bool collided(const Object& other);
 	virtual bool hurt();
+	bool getKill();
 
 protected:
+	bool kill;
 	Vector2 position;
 	std::shared_ptr<Level> level;
 };
