@@ -17,6 +17,7 @@ public:
 
 private:
 	void move(Vector2 m);
+	bool collision(Vector2 pos);
 
 protected:
 	bool leftClickFlag{ false };

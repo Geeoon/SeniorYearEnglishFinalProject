@@ -56,7 +56,21 @@ void Player::update(float elapsedTime) {
 
 void Player::move(Vector2 m) {
 	Vector2 future{ position + m };
-	if (!level->getTile(static_cast<int>(future.x / 40.0f), static_cast<int>(future.y / 40.0f))->solid()) {
+
+	if (!collision(future)) {
 		position = future;
 	}
+}
+
+bool Player::collision(Vector2 pos) {
+	bool output{ false };
+	for (int c = 0; c < 4; c++) {
+		Vector2 post{ pos.x + c % 2 * 2 - 20, pos.y + c / 2 * 40 - 20 };
+		if (level->getTile(static_cast<int>(post.x / 40.0f), static_cast<int>(post.y / 40.0f))->solid()) {
+			output = true;
+			break;
+		}
+	}
+	
+	return output;
 }
