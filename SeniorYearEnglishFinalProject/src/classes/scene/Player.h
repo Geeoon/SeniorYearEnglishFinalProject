@@ -15,8 +15,10 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
 
+private:
+	void move(Vector2 m);
+
 protected:
 	bool leftClickFlag{ false };
 	sf::RectangleShape gunSprite;
-	std::shared_ptr<Level> level;
 };

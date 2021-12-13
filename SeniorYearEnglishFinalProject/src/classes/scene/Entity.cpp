@@ -1,10 +1,10 @@
 #include "Entity.h"
 
-Entity::Entity(float x, float y) : Object{ Vector2{x, y} } {
+Entity::Entity(float x, float y, std::shared_ptr<Level> l) : Object{ Vector2{x, y}, l } {
 
 }
 
-Entity::Entity(Vector2 pos) : Object{ pos } {
+Entity::Entity(Vector2 pos, std::shared_ptr<Level> l) : Object{ pos, l } {
 
 }
 

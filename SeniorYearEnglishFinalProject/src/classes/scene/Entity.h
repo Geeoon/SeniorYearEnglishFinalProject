@@ -5,8 +5,8 @@
 
 class Entity : public Object {
 public:
-	Entity(float x, float y);
-	Entity(Vector2 pos);
+	Entity(float x, float y, std::shared_ptr<Level> l);
+	Entity(Vector2 pos, std::shared_ptr<Level> l);
 	~Entity();
 	void setOrientation(float o);
 

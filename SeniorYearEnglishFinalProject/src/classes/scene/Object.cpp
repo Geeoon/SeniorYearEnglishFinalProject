@@ -1,10 +1,10 @@
 #include "Object.h"
 
-Object::Object(float x, float y) : position{ Vector2{x, y} } {
+Object::Object(float x, float y, std::shared_ptr<Level> l) : position{ Vector2{x, y} }, level{ l } {
 
 }
 
-Object::Object(Vector2 pos) : position{ pos } {
+Object::Object(Vector2 pos, std::shared_ptr<Level> l) : position{ pos }, level{ l } {
 
 }
 

@@ -1,11 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "level/Level.h"
 #include "../physics/Vector.h"
 
 class Object : public sf::Drawable {
 public:
-	Object(float x, float y);
-	Object(Vector2 pos);
+	Object(float x, float y, std::shared_ptr<Level> l);
+	Object(Vector2 pos, std::shared_ptr<Level> l);
 	~Object();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void update(float elapsedTime);
@@ -15,5 +16,5 @@ public:
 
 protected:
 	Vector2 position;
-
+	std::shared_ptr<Level> level;
 };

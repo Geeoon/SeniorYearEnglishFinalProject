@@ -1,6 +1,6 @@
 #include "Bullet.h"
 
-Bullet::Bullet(float x, float y, float o) : Entity{ x, y }, sprite{ sf::RectangleShape{ sf::Vector2f{ 4.0f, 7.0f } } } {
+Bullet::Bullet(float x, float y, float o, std::shared_ptr<Level> l) : Entity{ x, y, l }, sprite{ sf::RectangleShape{ sf::Vector2f{ 4.0f, 7.0f } } } {
 	orientation = o;
 	sprite.setFillColor(sf::Color{ 192, 192, 192 });
 	sprite.setRotation(o - 90.0f);
@@ -9,7 +9,7 @@ Bullet::Bullet(float x, float y, float o) : Entity{ x, y }, sprite{ sf::Rectangl
 	maxSpeed = 1000.0f;
 }
 
-Bullet::Bullet(Vector2 pos, float o) : Entity{ pos }, sprite{ sf::RectangleShape{ sf::Vector2f{ 4.0f, 7.0f } } } {
+Bullet::Bullet(Vector2 pos, float o, std::shared_ptr<Level> l) : Entity{ pos, l }, sprite{ sf::RectangleShape{ sf::Vector2f{ 4.0f, 7.0f } } } {
 	orientation = o;
 	sprite.setFillColor(sf::Color{ 192, 192, 192 });
 	sprite.setRotation(o - 90.0f);

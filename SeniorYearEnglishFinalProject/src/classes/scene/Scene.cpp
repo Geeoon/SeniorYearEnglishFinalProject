@@ -4,7 +4,7 @@ Scene::Scene() {
 	level = std::make_shared<Level>();
 	player = std::make_shared<Player>(100.0f, 100.0f, objectsQueue, level);
 	objects.push_back(player);
-	objects.push_back(std::make_shared<Dummy>(200.0f, 200.0f, objectsQueue));
+	objects.push_back(std::make_shared<Dummy>(200.0f, 200.0f, objectsQueue, level));
 }
 
 Scene::~Scene() {
@@ -35,7 +35,7 @@ void Scene::update(sf::Vector2i mouseLocation) {
 	// check for collisions between objects
 	for (std::vector<std::shared_ptr<Object>>::iterator i = objects.begin(); i != objects.end() - 1; ++i) {
 		for (std::vector<std::shared_ptr<Object>>::iterator j = i + 1; j != objects.end(); ++j) {
-
+			(**i).collided(**j);
 		}
 	}
 	

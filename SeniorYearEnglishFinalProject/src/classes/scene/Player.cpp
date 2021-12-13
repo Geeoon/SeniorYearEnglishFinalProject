@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(float x, float y, std::queue<std::shared_ptr<Object>>& e, std::shared_ptr<Level> l) : Dummy{ x, y, e }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } }, level{ l } {
+Player::Player(float x, float y, std::queue<std::shared_ptr<Object>>& e, std::shared_ptr<Level> l) : Dummy{ x, y, e, l }, gunSprite{ sf::RectangleShape{sf::Vector2f{ 5.0f, 15.0f } } } {
 	sprite.setOutlineColor(sf::Color{ 0, 255, 65 });
 
 	gunSprite.setFillColor(sf::Color{ 0, 255, 65 });
@@ -19,33 +19,31 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void Player::update(float elapsedTime) {
-	Vector2 futurePosition{ position };
+	Vector2 movement{ 0.0f, 0.0f };
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		futurePosition -= elapsedTime * maxSpeed * Vector2(0.0f, 1.0f);
+		movement -= elapsedTime * maxSpeed * Vector2(0.0f, 1.0f);
 	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		futurePosition += elapsedTime * maxSpeed * Vector2(0.0f, 1.0f);
+		movement += elapsedTime * maxSpeed * Vector2(0.0f, 1.0f);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		futurePosition += elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
+		movement += elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
 	} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		futurePosition -= elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
-	}
-	
-	if (!level->getTile(static_cast<int>(futurePosition.x / 40.0f), static_cast<int>(position.y / 40.0f))->solid()) {
-		position.x = futurePosition.x;
+		movement -= elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
 	}
 
-	if (!level->getTile(static_cast<int>(position.x / 40.0f), static_cast<int>(futurePosition.y / 40.0f))->solid()) {
-		position.y = futurePosition.y;
+	if (movement.x != 0 && movement.y != 0) {
+		move(Vector2{ movement.x, 0.0f });
+		move(Vector2{ 0.0f, movement.y });
+	} else {
+		move(movement);
 	}
-
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (!leftClickFlag) {
 			leftClickFlag = true;
-			objects.push(std::make_shared<Bullet>(position + Vector2{ cos(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f), sin(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f) }, orientation));
+			objects.push(std::make_shared<Bullet>(position + Vector2{ cos(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f), sin(orientation * 3.141593f / 180.0f) * (sprite.getRadius() + 7.0f) }, orientation, level));
 		}
 	} else {
 		leftClickFlag = false;
@@ -54,4 +52,11 @@ void Player::update(float elapsedTime) {
 	Dummy::update(elapsedTime);
 	gunSprite.setPosition(position.x, position.y);
 	gunSprite.setRotation(orientation - 90.0f);
+}
+
+void Player::move(Vector2 m) {
+	Vector2 future{ position + m };
+	if (!level->getTile(static_cast<int>(future.x / 40.0f), static_cast<int>(future.y / 40.0f))->solid()) {
+		position = future;
+	}
 }
