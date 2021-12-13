@@ -144,6 +144,9 @@
     <ClCompile Include="src\classes\scene\Bullet.cpp" />
     <ClCompile Include="src\classes\scene\Dummy.cpp" />
     <ClCompile Include="src\classes\scene\Entity.cpp" />
+    <ClCompile Include="src\classes\scene\level\Level.cpp" />
+    <ClCompile Include="src\classes\scene\level\tile\Tile.cpp" />
+    <ClCompile Include="src\classes\scene\level\tile\WallTile.cpp" />
     <ClCompile Include="src\classes\scene\Object.cpp" />
     <ClCompile Include="src\classes\scene\Player.cpp" />
     <ClCompile Include="src\classes\scene\Scene.cpp" />
@@ -157,6 +160,9 @@
     <ClInclude Include="src\classes\scene\Bullet.h" />
     <ClInclude Include="src\classes\scene\Dummy.h" />
     <ClInclude Include="src\classes\scene\Entity.h" />
+    <ClInclude Include="src\classes\scene\level\Level.h" />
+    <ClInclude Include="src\classes\scene\level\tile\Tile.h" />
+    <ClInclude Include="src\classes\scene\level\tile\WallTile.h" />
     <ClInclude Include="src\classes\scene\Object.h" />
     <ClInclude Include="src\classes\scene\Player.h" />
     <ClInclude Include="src\classes\scene\Scene.h" />

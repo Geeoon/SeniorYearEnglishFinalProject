@@ -23,3 +23,11 @@ void Object::update(float elapsedTime) {
 Vector2 Object::getPosition() const {
 	return position;
 }
+
+bool Object::collided(const Object& other) {
+	return false;
+}
+
+bool Object::hurt() {
+	return false;
+}

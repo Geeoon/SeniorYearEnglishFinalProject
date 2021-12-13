@@ -5,8 +5,8 @@
 
 class Block : public Object {
 public:
-	Block(float x, float y, Vector2 d = Vector2{ 10.0f, 10.0f });
-	Block(Vector2 pos, Vector2 d = Vector2{ 10.0f, 10.0f });
+	Block(float x, float y, Vector2 d = Vector2{ 40.0f, 40.0f });
+	Block(Vector2 pos, Vector2 d = Vector2{ 40.0f, 40.0f });
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
 

@@ -1,7 +1,8 @@
 #include "Scene.h"
 
 Scene::Scene() {
-	player = std::make_shared<Player>(100.0f, 100.0f, objectsQueue);
+	level = std::make_shared<Level>();
+	player = std::make_shared<Player>(100.0f, 100.0f, objectsQueue, level);
 	objects.push_back(player);
 	objects.push_back(std::make_shared<Dummy>(200.0f, 200.0f, objectsQueue));
 }
@@ -11,6 +12,7 @@ Scene::~Scene() {
 }
 
 void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+	target.draw(*level);
 	std::for_each(objects.begin(), objects.end(), [&](std::shared_ptr<Object> e) { target.draw(*e); });
 }
 
@@ -31,7 +33,12 @@ void Scene::update(sf::Vector2i mouseLocation) {
 	}
 
 	// check for collisions between objects
-	//std::for_each(entities.begin(), entities.end(), [&](std::shared_ptr<Object> e) { e-> });
+	for (std::vector<std::shared_ptr<Object>>::iterator i = objects.begin(); i != objects.end() - 1; ++i) {
+		for (std::vector<std::shared_ptr<Object>>::iterator j = i + 1; j != objects.end(); ++j) {
+
+		}
+	}
+	
 }
 
 std::shared_ptr<Player> Scene::getPlayer() const {

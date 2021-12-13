@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <queue>
+#include "level/Level.h"
+#include "Block.h"
 #include "Entity.h"
 #include "Dummy.h"
 #include "Player.h"
@@ -21,4 +23,5 @@ private:
 	std::shared_ptr<Player> player;
 	std::vector<std::shared_ptr<Object>> objects;
 	std::queue<std::shared_ptr<Object>> objectsQueue;
+	std::shared_ptr<Level> level;
 };
