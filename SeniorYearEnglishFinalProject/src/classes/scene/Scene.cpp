@@ -4,7 +4,7 @@ Scene::Scene() {
 	level = std::make_shared<Level>();
 	player = std::make_shared<Player>(500.0f, 500.0f, objectsQueue, level);
 	objects.push_back(player);
-	objects.push_back(std::make_shared<Dummy>(400.0f, 400.0f, objectsQueue, level));
+	objects.push_back(std::make_shared<Follower>(400.0f, 400.0f, objectsQueue, level, player));
 }
 
 Scene::~Scene() {

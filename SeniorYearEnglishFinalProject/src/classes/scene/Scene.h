@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <queue>
+#include "Follower.h"
 #include "level/Level.h"
 #include "Entity.h"
 #include "Dummy.h"
