@@ -37,6 +37,11 @@ void Bullet::move(Vector2 m) {
 	}
 }
 
+void Bullet::hurt(std::shared_ptr<Object> other) {
+	other->damaged();
+	kill = true;
+}
+
 bool Bullet::collision(Vector2 pos) {
 	bool output{ false };
 	for (int c = 0; c < 4; c++) {

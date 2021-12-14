@@ -10,6 +10,7 @@ public:
 	Follower(Vector2 pos, std::queue<std::shared_ptr<Object>>& e, std::shared_ptr<Level> l, std::shared_ptr<Object> f);
 	~Follower();
 	virtual void update(float elapsedTime) override;
+	virtual void hurt(std::shared_ptr<Object> other) override;
 
 protected:
 	std::shared_ptr<Object> follow;

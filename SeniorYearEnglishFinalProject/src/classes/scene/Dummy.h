@@ -12,6 +12,9 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
 	virtual void move(Vector2 m) override;
+	virtual bool collided(const std::shared_ptr<Object> other) const override;
+	virtual void damaged() override;
+	virtual void hurt(std::shared_ptr<Object> other) override;
 
 protected:
 	Text hpIndicator;

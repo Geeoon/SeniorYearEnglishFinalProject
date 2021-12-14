@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "level/Level.h"
 #include "../physics/Vector.h"
@@ -12,8 +13,9 @@ public:
 	virtual void update(float elapsedTime);
 	Vector2 getPosition() const;
 	virtual void setPosition(Vector2 p);
-	virtual bool collided(const Object& other);
-	virtual bool hurt();
+	virtual bool collided(const std::shared_ptr<Object> other) const;
+	virtual void hurt(std::shared_ptr<Object> other);
+	virtual void damaged();
 	bool getKill();
 
 protected:

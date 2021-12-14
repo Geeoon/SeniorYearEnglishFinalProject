@@ -28,14 +28,18 @@ void Object::setPosition(Vector2 p) {
 	position = p;
 }
 
-bool Object::collided(const Object& other) {
+bool Object::collided(const std::shared_ptr<Object> other) const {
 	return false;
 }
 
-bool Object::hurt() {
-	return false;
+void Object::hurt(std::shared_ptr<Object> other) {
+
 }
 
 bool Object::getKill() {
 	return kill;
+}
+
+void Object::damaged() {
+
 }

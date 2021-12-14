@@ -42,6 +42,22 @@ void Dummy::move(Vector2 m) {
 	}
 }
 
+bool Dummy::collided(const std::shared_ptr<Object> other) const {
+	Vector2 delta{other->getPosition() - position};
+	return delta.magnitude() < sprite.getRadius();
+}
+
+void Dummy::damaged() {
+	hp--;
+	if (hp < 1) {
+		kill = true;
+	}
+}
+
+void Dummy::hurt(std::shared_ptr<Object> other) {
+
+}
+
 bool Dummy::collision(Vector2 pos) {
 	bool output{ false };
 	for (int c = 0; c < 4; c++) {

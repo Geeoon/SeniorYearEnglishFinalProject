@@ -22,7 +22,7 @@ Scene::Scene() {
 	objects.push_back(std::make_shared<Text>(425.0f, 450.0f, level, 12, "These white boxes around you are firewalls,\nyou cannot pass through them."));
 	objects.push_back(std::make_shared<Text>(800.0f, 600.0f, level, 12, "That red sphere that's trapped is a virus,\nit will attempt to infect you, do not let it get too close or you may die."));
 	objects.push_back(std::make_shared<Text>(900.0f, 300.0f, level, 12, "This blue rectangle is a trigger,\nupon being activated, sections of the level may change."));
-	objects.push_back(std::make_shared<Text>(1600.0f, 300.0f, level, 12, "Looks like this trigger released the virus!\nuse your gun to shoot the virus!"));	
+	objects.push_back(std::make_shared<Text>(1600.0f, 300.0f, level, 12, "Looks like this trigger released the virus!\nuse your gun to shoot the virus!"));
 }
 
 Scene::~Scene() {
@@ -47,10 +47,23 @@ void Scene::update(sf::Vector2i mouseLocation) {
 	std::for_each(objects.begin(), objects.end(), [&](std::shared_ptr<Object> e) { e->update(elapsedTime.asSeconds()); });
 
 	// update queued entities and push them into the main vector
+	
 	while (!objectsQueue.empty()) {
 		objects.push_back(objectsQueue.front());
 		objectsQueue.front()->update(elapsedTime.asSeconds());
 		objectsQueue.pop();
+	}	
+	
+
+	// check for collisions between objects
+	for (auto i = objects.begin(); i != objects.end(); ++i) {
+		for (auto j = objects.begin(); j != objects.end(); ++j) {
+			if (*i != *j) {
+				if ((*i)->collided(*j)) {
+					(*j)->hurt(*i);
+				}
+			}
+		}
 	}
 
 	// iterate and kill objects with getKill() == true
@@ -61,15 +74,6 @@ void Scene::update(sf::Vector2i mouseLocation) {
 			++i;
 		}
 	}
-
-	// check for collisions between objects
-	/*
-	for (std::vector<std::shared_ptr<Object>>::iterator i = objects.begin(); i != objects.end() - 1; ++i) {
-		for (std::vector<std::shared_ptr<Object>>::iterator j = i + 1; j != objects.end(); ++j) {
-			(**i).collided(**j);
-		}
-	}
-	*/
 }
 
 std::shared_ptr<Player> Scene::getPlayer() const {

@@ -18,3 +18,7 @@ void Follower::update(float elapsedTime) {
 	move(ratio * elapsedTime * deltaP);
 	Dummy::update(elapsedTime);
 }
+
+void Follower::hurt(std::shared_ptr<Object> other) {
+	other->damaged();
+}
