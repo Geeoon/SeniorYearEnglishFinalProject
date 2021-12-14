@@ -14,8 +14,11 @@ public:
 	~Player();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
+	virtual void damaged() override;
 
 protected:
+	const float immunity{ 1.0f };
+	float timer{ 0.0f };
 	bool leftClickFlag{ false };
 	sf::RectangleShape gunSprite;
 };

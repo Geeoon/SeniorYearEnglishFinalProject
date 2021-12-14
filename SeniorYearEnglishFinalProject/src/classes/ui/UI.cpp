@@ -46,6 +46,10 @@ void UI::pollEvent() {
 	}
 }
 
+void UI::close() {
+	window->close();
+}
+
 bool UI::isOpen() const {
 	return window->isOpen();
 }

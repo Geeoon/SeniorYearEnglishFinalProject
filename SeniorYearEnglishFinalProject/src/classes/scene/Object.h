@@ -16,6 +16,7 @@ public:
 	virtual bool collided(const std::shared_ptr<Object> other) const;
 	virtual void hurt(std::shared_ptr<Object> other);
 	virtual void damaged();
+	virtual bool neededForCompletion();
 	bool getKill();
 
 protected:

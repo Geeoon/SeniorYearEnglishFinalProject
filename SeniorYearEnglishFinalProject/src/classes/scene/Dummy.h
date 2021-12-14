@@ -15,6 +15,7 @@ public:
 	virtual bool collided(const std::shared_ptr<Object> other) const override;
 	virtual void damaged() override;
 	virtual void hurt(std::shared_ptr<Object> other) override;
+	virtual bool neededForCompletion() override;
 
 protected:
 	Text hpIndicator;

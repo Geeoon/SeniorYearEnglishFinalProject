@@ -58,6 +58,10 @@ void Dummy::hurt(std::shared_ptr<Object> other) {
 
 }
 
+bool Dummy::neededForCompletion() {
+	return true;
+}
+
 bool Dummy::collision(Vector2 pos) {
 	bool output{ false };
 	for (int c = 0; c < 4; c++) {

@@ -66,6 +66,21 @@ void Scene::update(sf::Vector2i mouseLocation) {
 		}
 	}
 
+	int num{ 0 };
+	for (auto i = objects.begin(); i != objects.end(); ++i) {
+		if ((*i)->neededForCompletion()) {
+			num++;
+		}
+	}
+
+	if (player->getKill() == true) {
+		done = 2;
+	}
+
+	if (num == 1) {
+		done = 1;
+	}
+
 	// iterate and kill objects with getKill() == true
 	for (auto i = objects.begin(); i != objects.end();) {
 		if ((*i)->getKill()) {
@@ -78,4 +93,8 @@ void Scene::update(sf::Vector2i mouseLocation) {
 
 std::shared_ptr<Player> Scene::getPlayer() const {
 	return player;
+}
+
+int Scene::getDone() {
+	return done;
 }

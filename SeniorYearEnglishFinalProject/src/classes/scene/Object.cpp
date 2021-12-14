@@ -36,6 +36,10 @@ void Object::hurt(std::shared_ptr<Object> other) {
 
 }
 
+bool Object::neededForCompletion() {
+	return false;
+}
+
 bool Object::getKill() {
 	return kill;
 }

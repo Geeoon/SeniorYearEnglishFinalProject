@@ -19,6 +19,9 @@ void Player::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 }
 
 void Player::update(float elapsedTime) {
+	if (timer < immunity) {
+		timer += elapsedTime;
+	}
 	Vector2 movement{ 0.0f, 0.0f };
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
@@ -47,4 +50,11 @@ void Player::update(float elapsedTime) {
 	Dummy::update(elapsedTime);
 	gunSprite.setPosition(position.x, position.y);
 	gunSprite.setRotation(orientation - 90.0f);
+}
+
+void Player::damaged() {
+	if (timer >= immunity) {
+		Dummy::damaged();
+		timer = 0.0f;
+	}
 }

@@ -18,10 +18,12 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	void update(sf::Vector2i mouseLocation);
 	std::shared_ptr<Player> getPlayer() const;
+	int getDone();
 
 	inline static sf::Time elapsedTime;
 
 private:
+	int done{ 0 };
 	sf::Clock clock;
 	std::shared_ptr<Player> player;
 	std::vector<std::shared_ptr<Object>> objects;

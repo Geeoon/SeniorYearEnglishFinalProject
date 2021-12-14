@@ -12,6 +12,7 @@ public:
 	void update();
 	void display();
 	void pollEvent();
+	void close();
 	bool isOpen() const;
 	sf::Vector2i getMouseLocation() const;
 	sf::Vector2i getAdjustedMouseLocation() const;
