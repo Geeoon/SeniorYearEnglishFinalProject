@@ -33,12 +33,7 @@ void Player::update(float elapsedTime) {
 		movement -= elapsedTime * maxSpeed * Vector2(1.0f, 0.0f);
 	}
 
-	if (movement.x != 0 && movement.y != 0) {
-		move(Vector2{ movement.x, 0.0f });
-		move(Vector2{ 0.0f, movement.y });
-	} else {
-		move(movement);
-	}
+	move(movement);
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (!leftClickFlag) {
@@ -52,24 +47,4 @@ void Player::update(float elapsedTime) {
 	Dummy::update(elapsedTime);
 	gunSprite.setPosition(position.x, position.y);
 	gunSprite.setRotation(orientation - 90.0f);
-}
-
-void Player::move(Vector2 m) {
-	Vector2 future{ position + m };
-
-	if (!collision(future)) {
-		position = future;
-	}
-}
-
-bool Player::collision(Vector2 pos) {
-	bool output{ false };
-	for (int c = 0; c < 4; c++) {
-		Vector2 post{ pos.x + c % 2 * 40 - 20, pos.y + c / 2 * 40 - 20 };
-		if (level->getTile(static_cast<int>(post.x / 40.0f), static_cast<int>(post.y / 40.0f))->solid()) {
-			output = true;
-			break;
-		}
-	}
-	return output;
 }

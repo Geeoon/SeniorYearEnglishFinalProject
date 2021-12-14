@@ -16,6 +16,5 @@ void Follower::update(float elapsedTime) {
 	Vector2 deltaP{ follow->getPosition() - position };
 	float ratio{ maxSpeed * MathHelper::calcInvSqrtFast(deltaP.x * deltaP.x + deltaP.y * deltaP.y) };
 	move(ratio * elapsedTime * deltaP);
-	std::cout << position.x << " " << position.y << std::endl;
 	Dummy::update(elapsedTime);
 }

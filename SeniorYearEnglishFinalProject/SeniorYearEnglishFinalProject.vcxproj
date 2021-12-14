@@ -150,6 +150,7 @@
     <ClCompile Include="src\classes\scene\Object.cpp" />
     <ClCompile Include="src\classes\scene\Player.cpp" />
     <ClCompile Include="src\classes\scene\Scene.cpp" />
+    <ClCompile Include="src\classes\ui\Element.cpp" />
     <ClCompile Include="src\classes\ui\Status.cpp" />
     <ClCompile Include="src\classes\ui\UI.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="src\classes\scene\Object.h" />
     <ClInclude Include="src\classes\scene\Player.h" />
     <ClInclude Include="src\classes\scene\Scene.h" />
+    <ClInclude Include="src\classes\ui\Element.h" />
     <ClInclude Include="src\classes\ui\Status.h" />
     <ClInclude Include="src\classes\ui\UI.h" />
   </ItemGroup>

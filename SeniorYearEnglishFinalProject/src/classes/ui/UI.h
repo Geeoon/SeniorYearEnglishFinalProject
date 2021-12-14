@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../scene/Object.h"
+#include "Element.h"
 
 class UI {
 public:
@@ -18,6 +19,7 @@ public:
 
 private:
 	std::unique_ptr<sf::RenderWindow> window{ nullptr };
+	std::vector<std::shared_ptr<Element>> elements{ nullptr };
 	std::shared_ptr<Object> objFocus{ nullptr };
 	sf::Vector2f seek;
 };
