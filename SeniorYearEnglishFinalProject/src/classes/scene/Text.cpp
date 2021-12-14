@@ -22,5 +22,9 @@ void Text::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 void Text::update(float elapsedTime) {
 	text.setOrigin(text.getLocalBounds().width / 2.0f, text.getLocalBounds().height / 2.0f);
+	text.setPosition(position.x, position.y);
+}
 
+void Text::setText(std::string t) {
+	text.setString(t);
 }

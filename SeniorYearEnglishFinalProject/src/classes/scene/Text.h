@@ -10,6 +10,7 @@ public:
 	~Text() = default;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	virtual void update(float elapsedTime) override;
+	void setText(std::string t);
 
 protected:
 	sf::Text text;

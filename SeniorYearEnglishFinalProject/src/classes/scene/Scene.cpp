@@ -19,7 +19,10 @@ Scene::Scene() {
 	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 23, 13 }));
 	objects.push_back(std::make_shared<Text>(260.0f, 0.0f, level, 24, "Welcome."));
 	objects.push_back(std::make_shared<Text>(260.0f, 200.0f, level, 12, "To move, use the [W] [A] [S] [D] keys."));
-	objects.push_back(std::make_shared<Text>(425.0f, 450.0f, level, 12, "These white boxes around you are firewalls, you cannot pass through them."));
+	objects.push_back(std::make_shared<Text>(425.0f, 450.0f, level, 12, "These white boxes around you are firewalls,\nyou cannot pass through them."));
+	objects.push_back(std::make_shared<Text>(800.0f, 600.0f, level, 12, "That red sphere that's trapped is a piece of malware,\nit will attempt to infect you, do not let it get too close or you may die."));
+	objects.push_back(std::make_shared<Text>(900.0f, 300.0f, level, 12, "This blue rectangle is a trigger,\nupon being activated, sections of the level may change."));
+	objects.push_back(std::make_shared<Text>(1600.0f, 300.0f, level, 12, "Looks like this trigger released the virus!\nuse your gun to shoot the virus!"));	
 }
 
 Scene::~Scene() {

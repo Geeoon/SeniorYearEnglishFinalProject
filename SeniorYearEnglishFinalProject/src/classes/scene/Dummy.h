@@ -1,6 +1,7 @@
 #pragma once
 #include <queue>
 #include "../physics/Vector.h"
+#include "Text.h"
 #include "Entity.h"
 
 class Dummy : public Entity {
@@ -13,6 +14,7 @@ public:
 	virtual void move(Vector2 m) override;
 
 protected:
+	Text hpIndicator;
 	virtual bool collision(Vector2 pos) override;
 	sf::CircleShape sprite;
 	std::queue<std::shared_ptr<Object>>& objects;
