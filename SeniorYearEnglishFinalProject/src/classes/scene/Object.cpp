@@ -24,6 +24,10 @@ Vector2 Object::getPosition() const {
 	return position;
 }
 
+void Object::setPosition(Vector2 p) {
+	position = p;
+}
+
 bool Object::collided(const Object& other) {
 	return false;
 }

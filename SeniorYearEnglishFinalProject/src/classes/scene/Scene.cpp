@@ -2,10 +2,24 @@
 
 Scene::Scene() {
 	level = std::make_shared<Level>();
-	player = std::make_shared<Player>(500.0f, 500.0f, objectsQueue, level);
+	player = std::make_shared<Player>(260.0f, 150.0f, objectsQueue, level);
 	objects.push_back(player);
-	objects.push_back(std::make_shared<Follower>(400.0f, 400.0f, objectsQueue, level, player));
-	objects.insert(objects.end(), level->getTriggers().begin(), level->getTriggers().end());
+	objects.push_back(std::make_shared<Follower>(880.0f, 480.0f, objectsQueue, level, player));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 20, 10 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 21, 10 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 22, 10 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 23, 10 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 20, 11 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 23, 11 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 20, 12 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 23, 12 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 20, 13 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 21, 13 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 22, 13 }));
+	objects.push_back(std::make_shared<WallTrigger>(1100.0f, 120.0f, level, Vector2{ 20.0f, 680.0f }, player, std::pair<int, int>{ 23, 13 }));
+	objects.push_back(std::make_shared<Text>(260.0f, 0.0f, level, 24, "Welcome."));
+	objects.push_back(std::make_shared<Text>(260.0f, 200.0f, level, 12, "To move, use the [W] [A] [S] [D] keys."));
+	objects.push_back(std::make_shared<Text>(425.0f, 450.0f, level, 12, "These white boxes around you are firewalls, you cannot pass through them."));
 }
 
 Scene::~Scene() {

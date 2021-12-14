@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <queue>
+#include "Text.h"
 #include "WallTrigger.h"
 #include "Trigger.h"
 #include "Follower.h"

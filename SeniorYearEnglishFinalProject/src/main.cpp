@@ -1,10 +1,14 @@
 #include <iostream>
+#include "classes/FontStorage.h"
 #include "classes/scene/Scene.h"
 #include "classes/ui/UI.h"
 
 int main() {
 	UI ui;
 	Scene scene;
+	if (!FontStorage::font.loadFromFile("dependencies/fonts/SourceCodePro-Regular.ttf")) {
+		return 1;
+	}
 	ui.setObjFocus(scene.getPlayer());
 	while (ui.isOpen()) {
 		ui.reset();

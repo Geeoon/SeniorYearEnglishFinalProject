@@ -11,6 +11,7 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	virtual void update(float elapsedTime);
 	Vector2 getPosition() const;
+	virtual void setPosition(Vector2 p);
 	virtual bool collided(const Object& other);
 	virtual bool hurt();
 	bool getKill();
