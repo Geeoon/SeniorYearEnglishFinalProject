@@ -9,7 +9,7 @@ Level::Level() : genericTile{ std::make_shared<Tile>(0, 0) } {
     }
 
     for (int i = 2; i < y / 2; i++) {
-        tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ i, y / 2 }, std::make_shared<WallTile>(i, y / 2)));
+        tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ x / 2, i }, std::make_shared<WallTile>(x / 2, i)));
     }
 
     for (int i = 2; i < y + 1; i++) {
@@ -17,7 +17,9 @@ Level::Level() : genericTile{ std::make_shared<Tile>(0, 0) } {
         tiles.insert(std::make_pair<std::pair<int, int>, std::shared_ptr<Tile>>(std::pair<int, int>{ x, i }, std::make_shared<WallTile>(x, i)));
     }
 
+    for () {
 
+    }
 }
 
 void Level::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -34,4 +36,8 @@ std::shared_ptr<Tile> Level::getTile(int x, int y) const {
     } else {
         return got->second;
     }
+}
+
+std::vector<std::shared_ptr<Object>>& Level::getTriggers() {
+    return triggers;
 }

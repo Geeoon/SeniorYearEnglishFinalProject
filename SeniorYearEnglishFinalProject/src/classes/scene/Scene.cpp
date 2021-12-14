@@ -5,6 +5,7 @@ Scene::Scene() {
 	player = std::make_shared<Player>(500.0f, 500.0f, objectsQueue, level);
 	objects.push_back(player);
 	objects.push_back(std::make_shared<Follower>(400.0f, 400.0f, objectsQueue, level, player));
+	objects.insert(objects.end(), level->getTriggers().begin(), level->getTriggers().end());
 }
 
 Scene::~Scene() {

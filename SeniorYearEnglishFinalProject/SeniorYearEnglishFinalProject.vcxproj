@@ -150,6 +150,8 @@
     <ClCompile Include="src\classes\scene\Object.cpp" />
     <ClCompile Include="src\classes\scene\Player.cpp" />
     <ClCompile Include="src\classes\scene\Scene.cpp" />
+    <ClCompile Include="src\classes\scene\Trigger.cpp" />
+    <ClCompile Include="src\classes\scene\WallTrigger.cpp" />
     <ClCompile Include="src\classes\ui\Element.cpp" />
     <ClCompile Include="src\classes\ui\Status.cpp" />
     <ClCompile Include="src\classes\ui\UI.cpp" />
@@ -168,9 +170,13 @@
     <ClInclude Include="src\classes\scene\Object.h" />
     <ClInclude Include="src\classes\scene\Player.h" />
     <ClInclude Include="src\classes\scene\Scene.h" />
+    <ClInclude Include="src\classes\scene\Trigger.h" />
     <ClInclude Include="src\classes\ui\Element.h" />
     <ClInclude Include="src\classes\ui\Status.h" />
     <ClInclude Include="src\classes\ui\UI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\classes\scene\WallTrigger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -57,6 +57,12 @@
     <ClCompile Include="src\classes\ui\Element.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\classes\scene\Trigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\classes\scene\WallTrigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\classes\scene\Scene.h">
@@ -104,5 +110,11 @@
     <ClInclude Include="src\classes\ui\Element.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\classes\scene\Trigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\classes\scene\WallTrigger.h" />
   </ItemGroup>
 </Project>

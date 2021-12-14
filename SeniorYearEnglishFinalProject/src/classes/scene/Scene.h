@@ -2,6 +2,8 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <queue>
+#include "WallTrigger.h"
+#include "Trigger.h"
 #include "Follower.h"
 #include "level/Level.h"
 #include "Entity.h"
