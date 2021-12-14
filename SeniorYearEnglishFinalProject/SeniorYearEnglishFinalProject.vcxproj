@@ -177,6 +177,7 @@
     <ClInclude Include="src\classes\scene\Scene.h" />
     <ClInclude Include="src\classes\scene\Text.h" />
     <ClInclude Include="src\classes\scene\Trigger.h" />
+    <ClInclude Include="src\classes\text\ConsoleHelper.h" />
     <ClInclude Include="src\classes\ui\Element.h" />
     <ClInclude Include="src\classes\ui\Status.h" />
     <ClInclude Include="src\classes\ui\UI.h" />
