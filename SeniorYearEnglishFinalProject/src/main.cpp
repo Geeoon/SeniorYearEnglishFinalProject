@@ -23,7 +23,7 @@ int main() {
 	ConsoleHelper::wait(2000);
 	ConsoleHelper::print("I've trapped one of the viruses, and I'm throwing you into a training level, ");
 	ConsoleHelper::wait(1500);
-	ConsoleHelper::print("good luck.");
+	ConsoleHelper::print("good luck.\n");
 	
 	UI ui;
 	Scene scene;
